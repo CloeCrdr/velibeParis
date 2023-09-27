@@ -1,0 +1,112 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+body {
+    background-color: #d4d4d4;
+    font-family: 'Inclusive Sans';
+}
+
+nav {
+    background-color: #5F8684;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 96%;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .logo {
+    height: 25px;
+    display: block;
+    background-color: #d4d4d4;
+    border-radius: 20px;
+    padding: 10px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul, nav ul a {
+    color: #d4d4d4;
+    text-decoration: none;
+}
+
+nav li {
+    padding: 0 10px 0 10px;
+}
+
+main {
+    margin-top: 8%;
+}
+
+main h1 {
+    text-align: center; 
+    font-size: 36px;
+    margin: 5%;
+    padding: 2%;
+}
+
+main .logheader {
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+/** GESTION DES FORMULAIRES **/
+
+div.form {
+    width : 30%;
+    padding: 1%;
+    margin: auto;
+    background-color: #5f8684c5;
+    border-radius: 10px;
+    color: #d4d4d4;
+    position: relative;
+    top: 8%;
+}
+
+div.form h2 {
+    font-size: 28px;
+    text-align: center;
+    color: #526D64;
+    margin-bottom: 5%;
+}
+
+div.form form span {
+    display: block;
+}
+
+div.form input:not([type="submit"]), div.form textarea {
+    display: block; 
+    margin: auto;
+    width: 70% !important;
+    padding: 2%;
+    border-radius: 5px;
+}
+
+div.form label {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    width: 74%;
+}
+
+div.form input[type="submit"] {
+    display: block;
+    margin: 5% auto;
+    width: 45%;
+    padding: 1% 4%;
+    color: #d4d4d4;
+    background-color: #526D64;
+    border-radius: 10px;
+}
