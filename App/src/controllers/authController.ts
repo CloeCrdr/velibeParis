@@ -23,7 +23,7 @@ export const login = async(req: Request, res: Response) => {
 
         // res.status(200).json({ statut: 'Succès', token });
 
-        const response = await fetch('http://localhost:3002/user');
+        const response = await fetch('http://localhost:3003/user');
         const data = await response.text();
         console.log(data);
         // Faites quelque chose avec la réponse (data)

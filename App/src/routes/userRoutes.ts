@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.route('/')
 .get( async (req: Request, res: Response) => {
-    const response =  await fetch('http://localhost:3002/user');
+    const response =  await fetch('http://localhost:3003/user');
     const users = await response.text();
     res.render('login.ejs',{"users":users})
 })

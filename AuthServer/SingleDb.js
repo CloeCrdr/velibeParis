@@ -4,7 +4,8 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
-  database: 'api_users'
+  database: 'api_users',
+  port: 8889,
 })
 
 export default db;

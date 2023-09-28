@@ -16,7 +16,7 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 router.route('/')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield fetch('http://localhost:3002/user');
+    const response = yield fetch('http://localhost:3003/user');
     const users = yield response.text();
     res.render('login.ejs', { "users": users });
 }));

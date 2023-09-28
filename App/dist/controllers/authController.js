@@ -26,7 +26,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         // }
         // const token = jwt.sign({ userId: user.id }, '//clésecrète');
         // res.status(200).json({ statut: 'Succès', token });
-        const response = yield fetch('http://localhost:3002/user');
+        const response = yield fetch('http://localhost:3003/user');
         const data = yield response.text();
         console.log(data);
         // Faites quelque chose avec la réponse (data)
