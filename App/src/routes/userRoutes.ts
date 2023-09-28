@@ -18,8 +18,21 @@ router.route('/home')
     res.render('index')
 })
 
-// router.post('/', login);
+/* Route account */
+router.route('/account')
+.get( async (req: Request, res: Response) => {
+    const response =  await fetch('http://localhost:3003/user');
+    const users = await response.text();
+    res.render('account',{"users":users})
+})
+
 // router.post('/register');
+router.route('/register')
+.get( async (req: Request, res: Response) => {
+    res.render('register')
+})
+
+// router.post('/', login);
 // router.post('/logout');
 // router.post('/account')
 

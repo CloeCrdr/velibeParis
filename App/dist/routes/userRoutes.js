@@ -27,8 +27,19 @@ router.route('/home')
     });
     res.render('index');
 });
-// router.post('/', login);
+/* Route account */
+router.route('/account')
+    .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = yield fetch('http://localhost:3003/user');
+    const users = yield response.text();
+    res.render('account', { "users": users });
+}));
 // router.post('/register');
+router.route('/register')
+    .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.render('register');
+}));
+// router.post('/', login);
 // router.post('/logout');
 // router.post('/account')
 module.exports = router;

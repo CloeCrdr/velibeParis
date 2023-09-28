@@ -20,6 +20,8 @@ nav {
     padding: 2%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    z-index: 2;
 }
 
 nav .logo {
@@ -29,6 +31,7 @@ nav .logo {
     border-radius: 20px;
     padding: 10px;
 }
+
 nav ul {
     list-style: none;
     display: flex;
@@ -109,4 +112,109 @@ div.form input[type="submit"] {
     color: #d4d4d4;
     background-color: #526D64;
     border-radius: 10px;
+}
+
+#account {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -2%;
+    height: 87vh;
+}
+#account .middle {
+    background-color: #7f828638;
+}
+
+.sides {
+    width: 33%; 
+}
+
+.middle {
+    width: 29%;
+    padding: 2%;
+}
+
+/*** AFFICHAGE DU PROFIL ***/
+
+.userInfos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+
+.userImg {
+    max-width: 150px;
+    border-radius: 50%;
+    padding: 10px; 
+    border: 1px double #5F8684;
+}
+
+.userInfos > div span {
+    display: block;
+}
+
+.userInfos span.identity {
+    font-size: 22px;
+    font-weight : bold ; 
+    color: #434041;
+}
+
+.userInfos span.email {
+    font-style: italic;
+    color: #73a9a5;
+}
+
+
+/** RESPONSIVE **/
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 20px;
+        z-index: 2;
+    }
+
+    nav.active ul {
+        display: flex;
+    }
+
+    nav li {
+        margin: 10px 0;
+        padding: 0;
+        border-bottom: 1px solid rgb(91, 91, 91);
+        display: block;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #d4d4d4;
+        margin: 3px 0;
+        transition: 0.4s;
+    }
+
+    .sides {
+        width: 10%;
+    }
+
+    .middle, div.form {
+        width: 70%;
+    }
+
+    main {
+        margin-top: 25%;
+    }
 }
