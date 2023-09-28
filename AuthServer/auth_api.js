@@ -1,17 +1,23 @@
 //  Ce server doit appelé les doonée présentes en base de donnée
-const express = require('express');
+import db from './SingleDb.js';
+import express from 'express';
 const app = express();
-
 const PORT = 3002;
 
+db.connect();
+
 app.get('/', (req, res) => {
-  res.send('Get all user');
+    let users = db.query(`SELECT * from users`,[]);
+    res.send('users');
 });
 
 app.get('/user', (req, res) => {
-    res.send('Va chercher le user John DOE en DB');
+    // let user = db.query(`SELECT * from users WHERE name = "?"`,[req.body.username]);
+    db.query(`SELECT nom from users WHERE nom = ?`,["Doe"], (err,results)=> {
+      res.send(results[0].nom);
+    });
   });
 
 app.listen(PORT, () => {
-  console.log(`Serveur en cours d'exécution sur http://localhost:${PORT}`);
+  console.log(`⚡️[server]:Serveur en cours d'exécution sur http://localhost:${PORT}`);
 });
