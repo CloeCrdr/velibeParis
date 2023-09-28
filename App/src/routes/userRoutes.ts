@@ -4,10 +4,10 @@ import { login } from '../controllers/authController';
 const router = express.Router();
 
 router.route('/')
-.get((req: Request, res: Response) => {
-    // let test = login(req,res);
-    console.log('blanla');
-    res.render('login.ejs')
+.get( async (req: Request, res: Response) => {
+    const response =  await fetch('http://localhost:3002/user');
+    const users = await response.text();
+    res.render('login.ejs',{"users":users})
 })
 
 router.route('/home')
