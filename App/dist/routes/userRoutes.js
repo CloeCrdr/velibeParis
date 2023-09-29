@@ -13,14 +13,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const body_parser_1 = __importDefault(require("body-parser"));
 const router = express_1.default.Router();
-router.route('/')
-    .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield fetch('http://localhost:3003/user');
-    const users = yield response.text();
-    res.render('login.ejs', { "users": users });
-}));
+router.use(body_parser_1.default.urlencoded({ extended: true }));
 router.route('/home')
+    .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    // const response =  await fetch('http://localhost:3003/user');
+    // const users = await response.text();
+    // if user connecté : retour sur render espace personnel 
+    // else render login ejs
+    res.render('login.ejs' /*,{"users":users}*/);
+}))
+    .post((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    // const users = await response.text();
+    console.log(req.body.email);
+    const response = yield fetch('http://localhost:3003/user', req.body);
+    // if user connecté : retour sur render espace personnel 
+    // else render login ejs
+    res.render('login.ejs' /*,{"users":users}*/);
+}));
+router.route('/')
     .get((req, res) => {
     router.route('/api/auth/').get((request, response) => {
         response.end();
@@ -39,7 +51,6 @@ router.route('/register')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.render('register');
 }));
-// router.post('/', login);
 // router.post('/logout');
 // router.post('/account')
 module.exports = router;

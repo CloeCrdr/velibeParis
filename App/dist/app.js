@@ -18,5 +18,5 @@ app.use(express_1.default.static(__dirname + '/assets'));
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use("/", routes);
 app.listen(port, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
+    console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });

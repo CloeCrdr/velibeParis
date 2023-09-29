@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 app.get('/user', (req, res) => {
   // let user = db.query(`SELECT * from users WHERE name = "?"`,[req.body.username]);
-  db.query(`SELECT nom from users WHERE nom = ?`, ["Doe"], (err, results) => {
+  db.query(`SELECT * from users WHERE email = ?`, [req.body.email], (err, results) => {
     if (!results) {
       res.send("Mauvaise page héhé");
     } else {

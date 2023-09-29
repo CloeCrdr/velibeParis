@@ -1,11 +1,12 @@
 * {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
+
 body {
     background-color: #d4d4d4;
     font-family: 'Inclusive Sans';
@@ -39,7 +40,8 @@ nav ul {
     align-items: center;
 }
 
-nav ul, nav ul a {
+nav ul,
+nav ul a {
     color: #d4d4d4;
     text-decoration: none;
 }
@@ -47,13 +49,47 @@ nav ul, nav ul a {
 nav li {
     padding: 0 10px 0 10px;
 }
+nav ul li a {
+    text-decoration: none;
+    position: relative;
+    color: #d4d4d4;
+}
+
+nav ul li a::before,
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    top: 25px;
+    height: 5px;
+    background-color: #526D64;
+    box-shadow: 0px 1px #5F8684;
+    border-radius: 15px;
+    transform-origin: left;
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a::before {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav ul li a::after {
+    right: 50%; 
+    transform: translateX(50%); 
+}
+
+nav ul li a:hover::before,
+nav ul li a:hover::after {
+    width: 50%; 
+}
 
 main {
     margin-top: 8%;
 }
 
 main h1 {
-    text-align: center; 
+    text-align: center;
     font-size: 36px;
     margin: 5%;
     padding: 2%;
@@ -68,7 +104,7 @@ main .logheader {
 /** GESTION DES FORMULAIRES **/
 
 div.form {
-    width : 30%;
+    width: 30%;
     padding: 1%;
     margin: auto;
     background-color: #5f8684c5;
@@ -89,8 +125,9 @@ div.form form span {
     display: block;
 }
 
-div.form input:not([type="submit"]), div.form textarea {
-    display: block; 
+div.form input:not([type="submit"]),
+div.form textarea {
+    display: block;
     margin: auto;
     width: 70% !important;
     padding: 2%;
@@ -120,12 +157,13 @@ div.form input[type="submit"] {
     margin-top: -2%;
     height: 87vh;
 }
+
 #account .middle {
     background-color: #7f828638;
 }
 
 .sides {
-    width: 33%; 
+    width: 33%;
 }
 
 .middle {
@@ -147,17 +185,17 @@ div.form input[type="submit"] {
 .userImg {
     max-width: 150px;
     border-radius: 50%;
-    padding: 10px; 
+    padding: 10px;
     border: 1px double #5F8684;
 }
 
-.userInfos > div span {
+.userInfos>div span {
     display: block;
 }
 
 .userInfos span.identity {
     font-size: 22px;
-    font-weight : bold ; 
+    font-weight: bold;
     color: #434041;
 }
 
@@ -179,12 +217,12 @@ div.form input[type="submit"] {
         background-color: #333;
         padding: 20px;
         z-index: 2;
-        transform: translateY(-100%); 
-        transition: transform 1.3s ease-in-out; 
+        transform: translateY(-100%);
+        transition: transform 1.3s ease-in-out;
     }
 
     nav.active ul {
-        transform: translateY(0); 
+        transform: translateY(0);
         display: flex;
     }
 
@@ -213,7 +251,8 @@ div.form input[type="submit"] {
         width: 10%;
     }
 
-    .middle, div.form {
+    .middle,
+    div.form {
         width: 70%;
     }
 

@@ -19,5 +19,5 @@ app.use(express.urlencoded({ extended: false }))
 app.use("/",routes);
 
 app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
+  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
