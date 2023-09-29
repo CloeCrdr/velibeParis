@@ -22,7 +22,7 @@ router.route('/home')
     // const users = await response.text();
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
-    res.render('login.ejs' /*,{"users":users}*/);
+    res.render('user_space.ejs' /*,{"users":users}*/);
 }))
     .post((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // const users = await response.text();
@@ -61,6 +61,11 @@ router.route('/edit_account')
     const response = yield fetch('http://localhost:3003/user');
     const users = yield response.text();
     res.render('edit_account', { "users": users });
+}));
+/** user itineraries */
+router.route('/my_itineraries')
+    .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.render('my_itineraries');
 }));
 // router.post('/register');
 router.route('/register')

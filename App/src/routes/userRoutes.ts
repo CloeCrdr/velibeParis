@@ -11,7 +11,7 @@ router.route('/home')
     // const users = await response.text();
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
-    res.render('login.ejs'/*,{"users":users}*/)
+    res.render('user_space.ejs'/*,{"users":users}*/)
 })
 .post( async (req: Request, res: Response) => {
     // const users = await response.text();
@@ -55,6 +55,12 @@ router.route('/edit_account')
     const response =  await fetch('http://localhost:3003/user');
     const users = await response.text();
     res.render('edit_account',{"users":users})
+})
+
+/** user itineraries */
+router.route('/my_itineraries')
+.get( async (req: Request, res:Response) => {
+    res.render('my_itineraries');
 })
 
 // router.post('/register');

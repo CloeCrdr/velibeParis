@@ -169,7 +169,6 @@ div.edit {
 
 #account .middle {
     background-color: white;
-
     box-shadow: 2px 2px 6px #7f8286ae;
     border-radius: 10px;
     padding: 30px;
@@ -181,6 +180,23 @@ div.edit {
 
 .sides {
     width: 33%;
+    margin-top: 5%;
+}
+
+.sides a{
+    display: block;
+}
+
+.sides .left {
+    text-align: right;
+    padding: 40px;
+}
+.sides .right {padding: 40px;}
+.sides .left img {
+    height: 75px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 50%;
 }
 
 .middle {
