@@ -136,6 +136,10 @@ router.route('/register')
     res.render('register')
 })
 
+router.route('/map')
+.get(async (req: Request, res: Response) => {
+    res.render('map')
+})
 // router.post('/logout');
 // router.post('/account')
 

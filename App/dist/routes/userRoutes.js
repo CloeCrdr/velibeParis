@@ -21,6 +21,10 @@ const jwtSecret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIwIjp7ImlkIjoxLCJub20i
 router.use(body_parser_1.default.urlencoded({ extended: true }));
 router.route('/home')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    // const response =  await fetch('http://localhost:3003/user');
+    // const users = await response.text();
+    // if user connecté : retour sur render espace personnel 
+    // else render login ejs
     res.render('user_space.ejs' /*,{"users":users}*/);
 }))
     .post((req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -128,6 +132,7 @@ router.route('/edit_account')
     const users = yield response.text();
     res.render('edit_account', { "users": users });
 }));
+/** user itineraries */
 router.route('/my_itineraries')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.render('my_itineraries');
@@ -136,6 +141,10 @@ router.route('/my_itineraries')
 router.route('/register')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.render('register');
+}));
+router.route('/map')
+    .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.render('map');
 }));
 // router.post('/logout');
 // router.post('/account')
