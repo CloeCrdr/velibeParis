@@ -11,7 +11,9 @@ body {
     background-color: #d4d4d4;
     font-family: 'Inclusive Sans';
 }
-
+body a {
+    text-decoration: none;
+}
 nav {
     background-color: #5F8684;
     position: fixed;
@@ -115,34 +117,36 @@ div.form {
     top: 8%;
 }
 
-div.form h2 {
+div.form h2, #account .middle h2 {
+    display: block;
     font-size: 28px;
     text-align: center;
     color: #526D64;
-    margin-bottom: 5%;
+    margin: 5% auto;
 }
 
-div.form form span {
+div.form form span, #account .middle form span {
     display: block;
 }
 
 div.form input:not([type="submit"]),
-div.form textarea {
+div.form textarea, #account .middle input:not([type="submit"]), #account .middle textarea {
     display: block;
     margin: auto;
     width: 70% !important;
     padding: 2%;
     border-radius: 5px;
+    border: 1px solid #d4d4d4;
 }
 
-div.form label {
+div.form label, #account .middle label {
     display: block;
     margin: auto;
     margin-top: 10px;
     width: 74%;
 }
 
-div.form input[type="submit"] {
+div.form input[type="submit"], #account .middle input[type="submit"] {
     display: block;
     margin: 5% auto;
     width: 45%;
@@ -150,6 +154,10 @@ div.form input[type="submit"] {
     color: #d4d4d4;
     background-color: #526D64;
     border-radius: 10px;
+}
+
+div.edit {
+    width: 100%;
 }
 
 #account {
@@ -160,9 +168,15 @@ div.form input[type="submit"] {
 }
 
 #account .middle {
-    background-color: #7f828638;
+    background-color: white;
+
+    box-shadow: 2px 2px 6px #7f8286ae;
     border-radius: 10px;
     padding: 30px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow: auto;
 }
 
 .sides {
@@ -182,6 +196,23 @@ div.form input[type="submit"] {
     align-items: center;
     flex-wrap: wrap;
     padding: 20px;
+    background-color: #43404109;
+}
+
+.contactInfos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 60px;
+    background-color: #43404109;
+    text-align: justify;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.contactInfos strong {
+    color:#5F8684;
 }
 
 
@@ -227,12 +258,14 @@ div.form input[type="submit"] {
 }
 
 .button {
-    padding: 10px 15px 10px 15px;
+    display: inline-block;
+    padding: 10px 25px 10px 25px;
     border: 1px solid #6C8065;
     color: #6C8065;
     border-radius: 10px;
     text-align: center;
     font-size: 12px;
+    margin-top: 5px;
 }
 
 /** RESPONSIVE **/
@@ -291,6 +324,8 @@ div.form input[type="submit"] {
 
     #account div.middle {
         background-color: white;
+        box-shadow: none;
+        display: block;
     }
 
     .middle,
@@ -335,4 +370,6 @@ div.form input[type="submit"] {
         margin: 2% auto;
         padding: 7px 15px 7px 15px;
     }
+
+    .contactInfos {display: none;}
 }

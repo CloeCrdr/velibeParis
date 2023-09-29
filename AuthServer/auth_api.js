@@ -1,4 +1,5 @@
 //  Ce server doit appelé les doonée présentes en base de donnée
+import 'dotenv/config';
 import db from './SingleDb.js';
 import express from 'express';
 const app = express();

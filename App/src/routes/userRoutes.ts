@@ -49,6 +49,14 @@ router.route('/account')
     res.render('account',{"users":users})
 })
 
+/*edit account */
+router.route('/edit_account')
+.get( async (req: Request, res: Response) => {
+    const response =  await fetch('http://localhost:3003/user');
+    const users = await response.text();
+    res.render('edit_account',{"users":users})
+})
+
 // router.post('/register');
 router.route('/register')
 .get( async (req: Request, res: Response) => {

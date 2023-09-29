@@ -55,6 +55,13 @@ router.route('/account')
     const users = yield response.text();
     res.render('account', { "users": users });
 }));
+/*edit account */
+router.route('/edit_account')
+    .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = yield fetch('http://localhost:3003/user');
+    const users = yield response.text();
+    res.render('edit_account', { "users": users });
+}));
 // router.post('/register');
 router.route('/register')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
