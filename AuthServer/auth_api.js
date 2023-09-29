@@ -7,7 +7,8 @@ import bodyParser from 'body-parser';
 
 db.connect();
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json());
+app.use(bodyParser.raw());
 
 app.get('/', (req, res) => {
   let users = db.query(`SELECT * from users`, []);
