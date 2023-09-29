@@ -179,9 +179,12 @@ div.form input[type="submit"] {
         background-color: #333;
         padding: 20px;
         z-index: 2;
+        transform: translateY(-100%); 
+        transition: transform 1.3s ease-in-out; 
     }
 
     nav.active ul {
+        transform: translateY(0); 
         display: flex;
     }
 
