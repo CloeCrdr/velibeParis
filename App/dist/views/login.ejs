@@ -15,7 +15,12 @@
                 <label for="">Mot de passe</label>
                 <input type="text" name="password">
             </span>
-
+            
+            <% if (errorMsg !== "") { %>
+                <span>
+                    <%= errorMsg %>   
+                </span>
+            <% } %>
             <input type="submit" value="Se connecter">
         </form>
     </div>

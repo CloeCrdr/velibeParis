@@ -22,21 +22,30 @@ router.route('/home')
     // const users = await response.text();
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
-    res.render('login.ejs' /*,{"users":users}*/);
+    res.render('login', { "errorMsg": "" });
 }))
     .post((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // const users = await response.text();
-    console.log(req.body);
     const response = yield fetch('http://localhost:3003/user', {
         method: 'POST',
         body: JSON.stringify(req.body),
         headers: {
             'Content-Type': 'application/json'
         }
+    })
+        .then((response) => response.json())
+        .then((data) => {
+        let user = data;
+        console.log(data);
+        if (user.results) {
+            res.redirect('account' /*,{"users":users}*/);
+        }
+        else {
+            res.render('login', { "errorMsg": data.mess });
+        }
     });
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
-    res.render('login.ejs' /*,{"users":users}*/);
 }));
 router.route('/login').get((req, res) => {
     res.render('login.ejs' /*,{"users":users}*/);
@@ -51,9 +60,9 @@ router.route('/')
 /* Route account */
 router.route('/account')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield fetch('http://localhost:3003/user');
-    const users = yield response.text();
-    res.render('account', { "users": users });
+    // const response =  await fetch('http://localhost:3003/user');
+    // const users = await response.text();
+    res.render('account' /*,{"users":users}*/);
 }));
 /*edit account */
 router.route('/edit_account')

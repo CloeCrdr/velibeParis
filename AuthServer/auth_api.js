@@ -2,14 +2,16 @@
 import 'dotenv/config';
 import db from './SingleDb.js';
 import express from 'express';
+import bodyParser from 'body-parser';  
+import jwt from 'jsonwebtoken'
+
 const app = express();
 const PORT = 3003;
-import bodyParser from 'body-parser';  
 
 db.connect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.raw());
+// app.use(bodyParser.raw());
 
 app.get('/', (req, res) => {
   let users = db.query(`SELECT * from users`, []);
@@ -17,13 +19,15 @@ app.get('/', (req, res) => {
 });
 
 app.post('/user', (req, res) => {
-  console.log("HERE", req)
   // let user = db.query(`SELECT * from users WHERE name = "?"`,[req.body.username]);
   db.query(`SELECT * from users WHERE email = ? AND password = ?`, [req.body.email, req.body.password], (err, results) => {
-    if (!results) {
-      res.send(false);
+    console.log(results);
+    if (results.length === 0 ) {
+      res.status(400).json({mess:"Email ou mot de passe incorrect"});
     } else {
-      res.send(true);
+      let token = jwt.sign({ ...results }, 'ma cle');
+      res.status(200);
+      res.send({ token,results })
     }
   });
 });
