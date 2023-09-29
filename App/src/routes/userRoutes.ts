@@ -15,14 +15,23 @@ router.route('/home')
 })
 .post( async (req: Request, res: Response) => {
     // const users = await response.text();
-    console.log(req.body.email)
-    const response =  await fetch('http://localhost:3003/user', req.body);
+    console.log(req.body)
+    const response =  await fetch('http://localhost:3003/user', {
+        method: 'POST',
+        body: JSON.stringify(req.body),
+        headers: {
+            'Content-Type': 'application/json'
+          }
+    });
 
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
     res.render('login.ejs'/*,{"users":users}*/)
 })
 
+router.route('/login').get((req: Request, res: Response) => {
+    res.render('login.ejs'/*,{"users":users}*/)
+})
 
 router.route('/')
 .get((req: Request, res: Response) => {

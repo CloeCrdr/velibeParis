@@ -3,21 +3,25 @@ import db from './SingleDb.js';
 import express from 'express';
 const app = express();
 const PORT = 3003;
+import bodyParser from 'body-parser';  
 
 db.connect();
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.get('/', (req, res) => {
   let users = db.query(`SELECT * from users`, []);
   res.send('users');
 });
 
-app.get('/user', (req, res) => {
+app.post('/user', (req, res) => {
+  console.log("HERE", req)
   // let user = db.query(`SELECT * from users WHERE name = "?"`,[req.body.username]);
-  db.query(`SELECT * from users WHERE email = ?`, [req.body.email], (err, results) => {
+  db.query(`SELECT * from users WHERE email = ? AND password = ?`, [req.body.email, req.body.password], (err, results) => {
     if (!results) {
-      res.send("Mauvaise page héhé");
+      res.send(false);
     } else {
-      res.send(results[0].nom);
+      res.send(true);
     }
   });
 });

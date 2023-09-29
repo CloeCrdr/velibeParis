@@ -49,6 +49,7 @@ nav ul a {
 nav li {
     padding: 0 10px 0 10px;
 }
+
 nav ul li a {
     text-decoration: none;
     position: relative;
@@ -75,13 +76,13 @@ nav ul li a::before {
 }
 
 nav ul li a::after {
-    right: 50%; 
-    transform: translateX(50%); 
+    right: 50%;
+    transform: translateX(50%);
 }
 
 nav ul li a:hover::before,
 nav ul li a:hover::after {
-    width: 50%; 
+    width: 50%;
 }
 
 main {
@@ -160,6 +161,8 @@ div.form input[type="submit"] {
 
 #account .middle {
     background-color: #7f828638;
+    border-radius: 10px;
+    padding: 30px;
 }
 
 .sides {
@@ -189,8 +192,16 @@ div.form input[type="submit"] {
     border: 1px double #5F8684;
 }
 
+.userInfos div.infos {
+    padding-top: 10%;
+    text-align: center;
+    max-width: 250px;
+}
+
 .userInfos>div span {
     display: block;
+
+    text-align: center;
 }
 
 .userInfos span.identity {
@@ -204,9 +215,32 @@ div.form input[type="submit"] {
     color: #73a9a5;
 }
 
+.userInfos span.fkPWD {
+    border-bottom: 6px dotted #526D64;
+    width: 50%;
+    margin: 5% auto;
+}
+
+.buttons {
+    text-align: center;
+    margin: 5% auto;
+}
+
+.button {
+    padding: 10px 15px 10px 15px;
+    border: 1px solid #6C8065;
+    color: #6C8065;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 12px;
+}
 
 /** RESPONSIVE **/
 @media (max-width: 768px) {
+    body {
+        background-color: white;
+    }
+
     nav ul {
         display: none;
         flex-direction: column;
@@ -247,8 +281,16 @@ div.form input[type="submit"] {
         transition: 0.4s;
     }
 
+    main {
+        margin-top: 25%;
+    }
+
     .sides {
         width: 10%;
+    }
+
+    #account div.middle {
+        background-color: white;
     }
 
     .middle,
@@ -256,7 +298,41 @@ div.form input[type="submit"] {
         width: 70%;
     }
 
-    main {
-        margin-top: 25%;
+    .userInfos {
+        justify-content: center;
+        box-shadow: 2px 2px 6px gray;
+        border-radius: 10px;
+        padding: 30px;
+        background: #f2f2f2;
+    }
+
+    .userInfos .userImg {
+        width: 50px;
+        padding: 4px;
+        background: white;
+    }
+
+    .userInfos>div {
+        border-top: 1px solid #d4d4d4;
+        margin-top: 5%;
+        padding-top: 10%;
+        text-align: center;
+    }
+
+    .userInfos span.identity {
+        font-size: 18px;
+    }
+
+    .userInfos span.email,
+    .userInfos span.fkPWD,
+    .userInfos span.itinerary {
+        font-size: 13px !important;
+        display: block;
+    }
+
+    .button {
+        display: block;
+        margin: 2% auto;
+        padding: 7px 15px 7px 15px;
     }
 }

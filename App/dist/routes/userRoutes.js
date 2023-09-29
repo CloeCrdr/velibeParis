@@ -26,12 +26,21 @@ router.route('/home')
 }))
     .post((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // const users = await response.text();
-    console.log(req.body.email);
-    const response = yield fetch('http://localhost:3003/user', req.body);
+    console.log(req.body);
+    const response = yield fetch('http://localhost:3003/user', {
+        method: 'POST',
+        body: JSON.stringify(req.body),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
     res.render('login.ejs' /*,{"users":users}*/);
 }));
+router.route('/login').get((req, res) => {
+    res.render('login.ejs' /*,{"users":users}*/);
+});
 router.route('/')
     .get((req, res) => {
     router.route('/api/auth/').get((request, response) => {
