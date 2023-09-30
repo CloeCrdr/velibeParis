@@ -32,11 +32,16 @@ router.route('/home')
     .then((response) => response.json())
     .then(async (data) => {
         let user = data;
-        let compare = await bcrypt.compare(req.body.password, user.results[0].password)
-        if(compare == true){
-            res.redirect('account'/*,{"users":users}*/)
+        if(user.results){
+            let compare = await bcrypt.compare(req.body.password, user.results[0].password)
+            console.log(compare);
+            if(compare == true){
+                res.redirect('account'/*,{"users":users}*/)
+            }else{
+                res.render('login',{"errorMsg":"Email ou mot de passe incorrect"})
+            }
         }else{
-            res.render('login',{"errorMsg":data.mess})
+            res.render('login',{"errorMsg":"Email ou mot de passe incorrect"})
         }
     });
     // if user connecté : retour sur render espace personnel 

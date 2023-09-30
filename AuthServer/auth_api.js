@@ -23,7 +23,7 @@ app.post('/user', (req, res) => {
   db.query(`SELECT * from users WHERE email = ? `, [req.body.email], (err, results) => {
     console.log(results);
     if (results.length === 0 ) {
-      res.status(400).json({mess:"Email ou mot de passe incorrect"});
+      res.status(400).json({mess:"Email incorrect"});
     } else {
       let token = jwt.sign({ ...results }, 'ma cle');
       res.status(200);

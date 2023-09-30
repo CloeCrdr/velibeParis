@@ -43,12 +43,18 @@ router.route('/home')
         .then((response) => response.json())
         .then((data) => __awaiter(void 0, void 0, void 0, function* () {
         let user = data;
-        let compare = yield bcrypt_1.default.compare(req.body.password, user.results[0].password);
-        if (compare == true) {
-            res.redirect('account' /*,{"users":users}*/);
+        if (user.results) {
+            let compare = yield bcrypt_1.default.compare(req.body.password, user.results[0].password);
+            console.log(compare);
+            if (compare == true) {
+                res.redirect('account' /*,{"users":users}*/);
+            }
+            else {
+                res.render('login', { "errorMsg": "Email ou mot de passe incorrect" });
+            }
         }
         else {
-            res.render('login', { "errorMsg": data.mess });
+            res.render('login', { "errorMsg": "Email ou mot de passe incorrect" });
         }
     }));
     // if user connecté : retour sur render espace personnel 
