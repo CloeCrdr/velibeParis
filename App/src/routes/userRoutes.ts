@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
-import { login } from '../controllers/authController';
 import bodyParser from 'body-parser'; 
+import bcrypt from 'bcrypt'
+
 
 const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -15,18 +16,24 @@ router.route('/home')
 })
 .post( async (req: Request, res: Response) => {
     // const users = await response.text();
+    console.log(console.log(req.body));
+    let logPass = {
+        email: req.body.email,
+        password : await bcrypt.hash(req.body.password, 10)
+    }
+    console.log(logPass)
     const response =  await fetch('http://localhost:3003/user', {
         method: 'POST',
-        body: JSON.stringify(req.body),
+        body: JSON.stringify(logPass),
         headers: {
             'Content-Type': 'application/json'
           }
     })
     .then((response) => response.json())
-    .then((data) => {
+    .then(async (data) => {
         let user = data;
-        console.log(data)
-        if(user.results){
+        let compare = await bcrypt.compare(req.body.password, user.results[0].password)
+        if(compare == true){
             res.redirect('account'/*,{"users":users}*/)
         }else{
             res.render('login',{"errorMsg":data.mess})

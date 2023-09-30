@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 
 app.post('/user', (req, res) => {
   // let user = db.query(`SELECT * from users WHERE name = "?"`,[req.body.username]);
-  db.query(`SELECT * from users WHERE email = ? AND password = ?`, [req.body.email, req.body.password], (err, results) => {
+  db.query(`SELECT * from users WHERE email = ? `, [req.body.email], (err, results) => {
     console.log(results);
     if (results.length === 0 ) {
       res.status(400).json({mess:"Email ou mot de passe incorrect"});

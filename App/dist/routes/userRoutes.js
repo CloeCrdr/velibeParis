@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const router = express_1.default.Router();
 router.use(body_parser_1.default.urlencoded({ extended: true }));
 router.route('/home')
@@ -26,24 +27,30 @@ router.route('/home')
 }))
     .post((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // const users = await response.text();
+    console.log(console.log(req.body));
+    let logPass = {
+        email: req.body.email,
+        password: yield bcrypt_1.default.hash(req.body.password, 10)
+    };
+    console.log(logPass);
     const response = yield fetch('http://localhost:3003/user', {
         method: 'POST',
-        body: JSON.stringify(req.body),
+        body: JSON.stringify(logPass),
         headers: {
             'Content-Type': 'application/json'
         }
     })
         .then((response) => response.json())
-        .then((data) => {
+        .then((data) => __awaiter(void 0, void 0, void 0, function* () {
         let user = data;
-        console.log(data);
-        if (user.results) {
+        let compare = yield bcrypt_1.default.compare(req.body.password, user.results[0].password);
+        if (compare == true) {
             res.redirect('account' /*,{"users":users}*/);
         }
         else {
             res.render('login', { "errorMsg": data.mess });
         }
-    });
+    }));
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
 }));
