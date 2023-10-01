@@ -2,16 +2,15 @@
     <title>VELIB' | vélibes à paris </title>
 
     <%- include('assets/nav') %>
-    <div id="account">
-        <div class="sides">
+        <div id="account">
+            <div class="sides">
 
-        </div>
-        <div class="middle">
-            <div class="edit">
-                <a href="/account" class="button">Retour au profil</a>
-                <h2>Modifier mon profil</h2>
-                
-                <form action="">
+            </div>
+            <div class="middle">
+                <div class="edit">
+                    <a href="/account" class="button">Retour au profil</a>
+                    <h2>Modifier mon profil</h2>
+
                     <form action="">
                         <span>
                             <label for="">Adresse mail</label>
@@ -25,15 +24,14 @@
                             <label for="">Confirmer le mot de passe</label>
                             <input type="password">
                         </span>
-            
+
                         <input type="submit" value="Modifier mon profil">
                     </form>
-                </form>
+                </div>
+
             </div>
+            <div class="sides">
 
+            </div>
         </div>
-        <div class="sides">
-
-        </div>
-        </div>
-    <%- include('assets/footer') %>
+        <%- include('assets/footer') %>
