@@ -2,6 +2,7 @@
 import express, { Express, Request, Response } from 'express';
 import path from "path";
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 const routes = require('./routes/userRoutes')
 
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(__dirname+'/assets'));
 app.use(express.urlencoded({ extended: false }))
-
+app.use(cookieParser());
 
 app.use("/",routes);
 

@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken'
 
 const app = express();
 const PORT = 3003;
+const jwtSecret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIwIjp7ImlkIjoxLCJub20iOiJEb2UiLCJwcmVub20iOiJKb2huIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEpGWUJHSW9obDdsc000SkIyZnhONHV2Vy9zcXFsZkxBaTJ1NFVLaUR2UFUubHZZQWRQS0llIn0sImlhdCI6MTY5NjE1MDcxOX0.KQ0XyJB8w4WrQkvyKkjOPt6PCJRJRl09NC2w6UYMadw'
 
 db.connect();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,7 +26,8 @@ app.post('/login', (req, res) => {
     if (results.length === 0 ) {
       res.status(400).json({mess:"Email incorrect"});
     } else {
-      let token = jwt.sign({ ...results }, 'ma cle');
+      let token = jwt.sign({ ...results }, jwtSecret);
+      console.log("token: "+token)
       res.status(200);
       res.send({ token,results })
     }
