@@ -120,7 +120,10 @@ router.route('/edit_account')
     res.render('edit_account',{"users":users})
 })
 
-
+router.route('/map')
+.get(async (req: Request, res: Response) => {
+    res.render('map')
+})
 
 // router.post('/logout');
 // router.post('/account')

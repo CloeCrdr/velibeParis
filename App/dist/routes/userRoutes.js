@@ -128,6 +128,10 @@ router.route('/edit_account')
     const users = yield response.text();
     res.render('edit_account', { "users": users });
 }));
+router.route('/map')
+    .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.render('map');
+}));
 // router.post('/logout');
 // router.post('/account')
 module.exports = router;
