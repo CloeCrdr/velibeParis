@@ -25,7 +25,7 @@ router.route('/home')
     // const users = await response.text();
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
-    res.render('user_space.ejs' /*,{"users":users}*/);
+    res.render('user_space.ejs', { "isLogged": req.cookies.jwt });
 }))
     .post((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let logPass = {
@@ -67,7 +67,7 @@ router.route('/home')
 // router.post('/register');
 router.route('/register')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.render('register');
+    res.render('register', { "isLogged": req.cookies.jwt });
 }))
     .post((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // const users = await response.text();
@@ -99,14 +99,14 @@ router.route('/register')
     }
 }));
 router.route('/login').get((req, res) => {
-    res.render('login.ejs' /*,{"users":users}*/);
+    res.render('login.ejs', { "isLogged": req.cookies.jwt });
 });
 router.route('/')
     .get((req, res) => {
     router.route('/api/auth/').get((request, response) => {
         response.end();
     });
-    res.render('index');
+    res.render('index', { "isLogged": req.cookies.jwt });
 });
 /* Route account */
 router.route('/account')
@@ -117,12 +117,12 @@ router.route('/account')
                 return res.render('login', { "errorMsg": "Accès non autorisé veuillez vous authentifier!" });
             }
             else {
-                res.render('account' /*,{"users":users}*/);
+                res.render('account', { "isLogged": req.cookies.jwt });
             }
         });
     }
     else {
-        res.render('login', { "errorMsg": "Accès non autorisé veuillez vous authentifier!" });
+        res.render('login', { "errorMsg": "Accès non autorisé veuillez vous authentifier!", "isLogged": req.cookies.jwt });
     }
 }));
 /*edit account */
@@ -130,21 +130,21 @@ router.route('/edit_account')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield fetch('http://localhost:3003/user');
     const users = yield response.text();
-    res.render('edit_account', { "users": users });
+    res.render('edit_account', { "users": users, "isLogged": req.cookies.jwt });
 }));
 /** user itineraries */
 router.route('/my_itineraries')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.render('my_itineraries');
+    res.render('my_itineraries', { "isLogged": req.cookies.jwt });
 }));
 // router.post('/register');
 router.route('/register')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.render('register');
+    res.render('register', { "isLogged": req.cookies.jwt });
 }));
 router.route('/map')
     .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.render('map');
+    res.render('map', { "isLogged": req.cookies.jwt });
 }));
 // router.post('/logout');
 // router.post('/account')

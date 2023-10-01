@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import 'dotenv/config'
->>>>>>> 8fc1331 (.)
 import mysql from 'mysql2';
 
 const db = mysql.createConnection({

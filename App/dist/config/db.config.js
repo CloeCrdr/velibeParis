@@ -29,6 +29,6 @@ const connectionBdd = mysql.createConnection({
     user: "root",
     password: "root",
     database: "velibparis",
-    port: 3306,
+    port: 8889,
 });
 exports.default = connectionBdd;

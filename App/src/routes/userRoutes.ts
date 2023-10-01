@@ -15,7 +15,7 @@ router.route('/home')
     // const users = await response.text();
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
-    res.render('user_space.ejs'/*,{"users":users}*/)
+    res.render('user_space.ejs', {"isLogged":req.cookies.jwt})
 })
 .post( async (req: Request, res: Response) => {
     let logPass = {
@@ -56,7 +56,7 @@ router.route('/home')
 // router.post('/register');
 router.route('/register')
 .get( async (req: Request, res: Response) => {
-    res.render('register')
+    res.render('register', {"isLogged":req.cookies.jwt})
 })
 .post( async (req: Request, res: Response) => {
     // const users = await response.text();
@@ -89,7 +89,7 @@ router.route('/register')
 })
 
 router.route('/login').get((req: Request, res: Response) => {
-    res.render('login.ejs'/*,{"users":users}*/)
+    res.render('login.ejs', {"isLogged":req.cookies.jwt})
 })
 
 router.route('/')
@@ -97,7 +97,7 @@ router.route('/')
     router.route('/api/auth/').get((request: Request, response: Response) => {
         response.end()
     })
-    res.render('index')
+    res.render('index', {"isLogged":req.cookies.jwt})
 })
 
 /* Route account */
@@ -108,11 +108,11 @@ router.route('/account')
             if (err) {
               return res.render('login',{"errorMsg":"Accès non autorisé veuillez vous authentifier!"})
             }else{
-                res.render('account'/*,{"users":users}*/)
+                res.render('account', {"isLogged":req.cookies.jwt})
             }
         })
     }else{
-        res.render('login',{"errorMsg":"Accès non autorisé veuillez vous authentifier!"})
+        res.render('login',{"errorMsg":"Accès non autorisé veuillez vous authentifier!", "isLogged":req.cookies.jwt})
     }
 })
 
@@ -121,24 +121,24 @@ router.route('/edit_account')
 .get( async (req: Request, res: Response) => {
     const response =  await fetch('http://localhost:3003/user');
     const users = await response.text();
-    res.render('edit_account',{"users":users})
+    res.render('edit_account',{"users":users, "isLogged":req.cookies.jwt})
 })
 
 /** user itineraries */
 router.route('/my_itineraries')
 .get( async (req: Request, res:Response) => {
-    res.render('my_itineraries');
+    res.render('my_itineraries', {"isLogged":req.cookies.jwt});
 })
 
 // router.post('/register');
 router.route('/register')
 .get( async (req: Request, res: Response) => {
-    res.render('register')
+    res.render('register', {"isLogged":req.cookies.jwt})
 })
 
 router.route('/map')
 .get(async (req: Request, res: Response) => {
-    res.render('map')
+    res.render('map', {"isLogged":req.cookies.jwt})
 })
 // router.post('/logout');
 // router.post('/account')

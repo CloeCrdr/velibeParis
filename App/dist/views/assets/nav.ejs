@@ -9,31 +9,41 @@
             <div></div>
         </div>
         <ul>
-            <li>
-                <a href="/">
-                    Accueil
-                </a>
-            </li>
-            <li>
-                <a href="/home">
-                    Espace personnel
-                </a>
-            </li>
-            <li>
-                <a href="/account">
-                    Mon compte
-                </a>
-            </li>
-            <li>
-                <a href="/login">
-                    Connexion
-                </a>
-            </li>
-            <li>
-                <a href="/register">
-                    Inscription
-                </a>
-            </li>
+            <% if (isLogged) { %>
+                <li>
+                    <a href="/home">
+                        Accueil
+                    </a>
+                </li>
+                <li>
+                    <a href="/account">
+                        Mon compte
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        Déconnexion
+                    </a>
+                </li>
+         
+            <% } else{ %>
+                <li>
+                    <a href="/">
+                        Accueil
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="/login">
+                        Connexion
+                    </a>
+                </li>
+                <li>
+                    <a href="/register">
+                        Inscription
+                    </a>
+                </li>
+            <% } %>
         </ul>
     </nav>
     <main>
