@@ -17,20 +17,20 @@
             </span>
             <span>
                 <label for="">Adresse mail</label>
-                <input type="text" name="email">
+                <input type="email" name="email">
             </span>
             <span>
                 <label for="">Mot de passe</label>
-                <input type="text" name="password">
+                <input type="password" name="password">
             </span>
             <span>
                 <label for="">Confirmer le mot de passe</label>
-                <input type="text" name="confirmpass">
+                <input type="password" name="confirmpass">
             </span>
 
             <input type="submit" value="S'inscrire">
             <% if ( typeof(errorMsg) !== "undefined" && errorMsg !== "") { %>
-                <span>
+                <span class="error">
                     <%= errorMsg %>   
                 </span>
             <% } %>

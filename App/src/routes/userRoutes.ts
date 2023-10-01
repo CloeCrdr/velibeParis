@@ -34,7 +34,6 @@ router.route('/home')
         let user = data;
         if(user.results){
             let compare = await bcrypt.compare(req.body.password, user.results[0].password)
-            console.log(compare);
             if(compare == true){
                 res.cookie("jwt", user.token, {
                     httpOnly: true,

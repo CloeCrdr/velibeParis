@@ -117,6 +117,12 @@ div.form {
     top: 8%;
 }
 
+span.error {
+    display: block;
+    text-align: center;
+    color: #806570;
+}
+
 div.form h2, #account .middle h2 {
     display: block;
     font-size: 28px;
@@ -156,6 +162,17 @@ div.form input[type="submit"], #account .middle input[type="submit"] {
     border-radius: 10px;
 }
 
+/*** MAP ***/
+#account .middle .leaflet-right {
+    max-height:150px;
+    overflow:auto;
+    line-height: 120%;
+}
+
+#account .middle .leaflet-right h2 {
+    font-size: 16px;
+}
+
 div.edit {
     width: 100%;
 }
@@ -176,6 +193,16 @@ div.edit {
     align-items: flex-start;
     flex-wrap: wrap;
     overflow: auto;
+}
+
+.maps #map {
+    margin-top: -100px;
+    border-radius: 10px;
+    border: 15px solid #f2f2f2 !important;
+    min-height: 500px;
+    width:90%;
+    margin-left:3%; 
+    margin-right:3%;
 }
 
 .sides {

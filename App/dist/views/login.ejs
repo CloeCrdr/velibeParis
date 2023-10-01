@@ -9,11 +9,11 @@
         <form action="/home" method="POST">
             <span>
                 <label for="">Adresse mail</label>
-                <input type="text" name="email">
+                <input type="email" name="email">
             </span>
             <span>
                 <label for="">Mot de passe</label>
-                <input type="text" name="password">
+                <input type="password" name="password">
             </span>
             
             <% if ( typeof(errorMsg) !== "undefined" && errorMsg !== "") { %>
