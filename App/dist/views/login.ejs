@@ -16,7 +16,7 @@
                 <input type="text" name="password">
             </span>
             
-            <% if (errorMsg !== "") { %>
+            <% if ( typeof(errorMsg) !== "undefined" && errorMsg !== "") { %>
                 <span>
                     <%= errorMsg %>   
                 </span>

@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
   res.send('users');
 });
 
-app.post('/user', (req, res) => {
+app.post('/login', (req, res) => {
   // let user = db.query(`SELECT * from users WHERE name = "?"`,[req.body.username]);
   db.query(`SELECT * from users WHERE email = ? `, [req.body.email], (err, results) => {
     console.log(results);
@@ -29,6 +29,19 @@ app.post('/user', (req, res) => {
       res.status(200);
       res.send({ token,results })
     }
+  });
+});
+
+app.post('/register', (req, res) => {
+  // let user = db.query(`SELECT * from users WHERE name = "?"`,[req.body.username]);
+  db.query(`INSERT INTO users (nom,prenom,email,password) VALUES (?,?,?,?) `, [req.body.nom,req.body.prenom,req.body.email,req.body.password], (err, results) => {
+    if(results && results.insertId > 0){
+      res.status(201).json({mess:"Register success",status:true})
+    }else{
+      res.status(500).json({mess:"Register failed",status:false})
+    }
+
+    err ? console.log(err):'';
   });
 });
 

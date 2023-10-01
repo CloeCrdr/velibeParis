@@ -16,13 +16,13 @@ router.route('/home')
 })
 .post( async (req: Request, res: Response) => {
     // const users = await response.text();
-    console.log(console.log(req.body));
+   console.log(req.body);
     let logPass = {
         email: req.body.email,
         password : await bcrypt.hash(req.body.password, 10)
     }
     console.log(logPass)
-    const response =  await fetch('http://localhost:3003/user', {
+    const response =  await fetch('http://localhost:3003/login', {
         method: 'POST',
         body: JSON.stringify(logPass),
         headers: {
@@ -46,6 +46,41 @@ router.route('/home')
     });
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
+})
+
+// router.post('/register');
+router.route('/register')
+.get( async (req: Request, res: Response) => {
+    res.render('register')
+})
+.post( async (req: Request, res: Response) => {
+    // const users = await response.text();
+   console.log(req.body);
+   let registerDatas = {
+        nom: req.body.nom,
+        prenom: req.body.prenom,
+        email: req.body.email,
+        password : await bcrypt.hash(req.body.password, 10)
+    }
+    if(req.body.password == req.body.confirmpass){
+        const response =  await fetch('http://localhost:3003/register', {
+            method: 'POST',
+            body: JSON.stringify(registerDatas),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) => response.json())
+        .then(async (data) => {
+            console.log(data)
+            if(data.status == true){
+                res.redirect("login");
+            }
+        })
+    }else{
+        res.render("register",{"errorMsg":"Erreur d'inscription"})
+    }
+   
 })
 
 router.route('/login').get((req: Request, res: Response) => {
@@ -76,11 +111,7 @@ router.route('/edit_account')
     res.render('edit_account',{"users":users})
 })
 
-// router.post('/register');
-router.route('/register')
-.get( async (req: Request, res: Response) => {
-    res.render('register')
-})
+
 
 // router.post('/logout');
 // router.post('/account')

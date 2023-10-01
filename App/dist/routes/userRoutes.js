@@ -27,13 +27,13 @@ router.route('/home')
 }))
     .post((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // const users = await response.text();
-    console.log(console.log(req.body));
+    console.log(req.body);
     let logPass = {
         email: req.body.email,
         password: yield bcrypt_1.default.hash(req.body.password, 10)
     };
     console.log(logPass);
-    const response = yield fetch('http://localhost:3003/user', {
+    const response = yield fetch('http://localhost:3003/login', {
         method: 'POST',
         body: JSON.stringify(logPass),
         headers: {
@@ -60,6 +60,40 @@ router.route('/home')
     // if user connecté : retour sur render espace personnel 
     // else render login ejs
 }));
+// router.post('/register');
+router.route('/register')
+    .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.render('register');
+}))
+    .post((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    // const users = await response.text();
+    console.log(req.body);
+    let registerDatas = {
+        nom: req.body.nom,
+        prenom: req.body.prenom,
+        email: req.body.email,
+        password: yield bcrypt_1.default.hash(req.body.password, 10)
+    };
+    if (req.body.password == req.body.confirmpass) {
+        const response = yield fetch('http://localhost:3003/register', {
+            method: 'POST',
+            body: JSON.stringify(registerDatas),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((response) => response.json())
+            .then((data) => __awaiter(void 0, void 0, void 0, function* () {
+            console.log(data);
+            if (data.status == true) {
+                res.redirect("login");
+            }
+        }));
+    }
+    else {
+        res.render("register", { "errorMsg": "Erreur d'inscription" });
+    }
+}));
 router.route('/login').get((req, res) => {
     res.render('login.ejs' /*,{"users":users}*/);
 });
@@ -83,11 +117,6 @@ router.route('/edit_account')
     const response = yield fetch('http://localhost:3003/user');
     const users = yield response.text();
     res.render('edit_account', { "users": users });
-}));
-// router.post('/register');
-router.route('/register')
-    .get((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.render('register');
 }));
 // router.post('/logout');
 // router.post('/account')
