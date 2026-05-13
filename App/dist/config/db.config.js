@@ -25,10 +25,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mysql = __importStar(require("mysql2"));
 const connectionBdd = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "velibparis",
-    port: 8889,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: Number(process.env.DB_PORT)
 });
 exports.default = connectionBdd;
